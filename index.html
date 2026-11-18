@@ -1,72 +1,258 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Phoenix editor</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
-    </head>
 
-    <body onload="onPageLoaded()">
-        <img id="starsLeft" alt="stars" src="images/stars-left.svg" />
-        <div id="mainDiv">
-            <img id="logo" alt="logo" src="images/phoenix-logo.svg" />
-            <div id="MainText">
-                <h1>Phoenix Code</h1>
-                <span>Click here to locate this &lt;span&gt; in the HTML file<br /></span><br />
-            </div>
-            <div class="video-container">
-                <a
-                    href="https://www.youtube.com/@phoenixcodeeditor3764"
-                    target="_blank"
-                    title="Phoenix YouTube Channel"
-                    class="phcode-no-lp-edit">
-                    <img
-                        src="images/youtube_video.png"
-                        alt="Phoenix Code on YouTube"
-                        title="Phoenix Code on YouTube"
-                        style="max-width: 320px" />
-                </a>
-                <img src="images/play.svg" class="play-button phcode-no-lp-edit" style="width: 64px;" alt="play">
-            </div>
-        </div>
-        <img id="cloudLeftTop" alt="cloud" src="images/vector-top-left.png" />
-        <img id="cloudBottomRight" alt="cloud" src="images/vector-bottom-right.png" />
-        <img id="starsRight" alt="stars" src="images/stars-right.svg" />
-        <img
-            class="clouds"
-            alt="cloud"
-            style="z-index: 3; transform: translate(0px, -1.55909px)"
-            src="images/cloud1.svg" />
-        <img
-            class="clouds"
-            alt="cloud"
-            style="z-index: 6; transform: translate(0px, -2.33863px)"
-            src="images/cloud2.svg" />
-        <img
-            class="clouds"
-            alt="cloud"
-            style="z-index: 5; transform: translate(0px, -3.89772px)"
-            src="images/cloud3.svg" />
-        <img
-            class="clouds"
-            alt="cloud"
-            style="z-index: 6; transform: translate(0px, -3.89772px)"
-            src="images/cloud4.svg" />
-        <div class="night">
-            <div class="shooting_star">
-                <div class="shooting_star" />
-            </div>
-        </div>
-        <div class="night">
-            <div class="shooting_star">
-                <div class="shooting_star" />
-            </div>
-        </div>
-        <div class="night">
-            <div class="shooting_star">
-                <div class="shooting_star" />
-            </div>
-        </div>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm not a robot</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CAPTCHA BOX */
+.captcha {
+    width: 480px;
+    height: 132px;
+    max-width: 92vw;
+    background: #fafafa;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+/* ESCAPING CHECKBOX */
+.checkbox {
+    width: 38px;
+    height: 38px;
+    border: 3px solid #c1c1c1;
+    border-radius: 4px;
+    background: white;
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: default;
+    z-index: 5;
+}
+
+/* MAIN TEXT */
+.label {
+    position: absolute;
+    left: 78px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    font-weight: 400;
+    color: #111;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* LOGO */
+.logo {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    width: 76px;
+    text-align: center;
+    color: #555;
+    user-select: none;
+    pointer-events: none;
+}
+
+.logo svg {
+    width: 55px;
+    height: 55px;
+    display: block;
+    margin: auto;
+}
+
+.logo-text {
+    font-size: 14px;
+    margin-top: 5px;
+    letter-spacing: 0.1px;
+}
+
+/* MESSAGE */
+.message {
+    position: absolute;
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+    pointer-events: none;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="captcha" id="captcha">
+
+    <div class="checkbox" id="checkbox"></div>
+
+    <div class="label" id="label">
+        I'm not a robot
+    </div>
+
+    <div class="logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+
+            <!-- Blue upper arrow -->
+            <path d="M18 42
+                     C18 20 34 8 56 8
+                     L56 25
+                     L78 25
+                     L78 50
+                     L56 50
+                     L56 37
+                     C44 37 35 42 32 52
+                     Z"
+                  fill="#4285f4"/>
+
+            <!-- Dark blue arrow -->
+            <path d="M56 8
+                     L82 8
+                     L96 29
+                     L96 51
+                     L72 51
+                     L72 34
+                     L56 25
+                     Z"
+                  fill="#1c3aa9"/>
+
+            <!-- Grey lower arrow -->
+            <path d="M18 42
+                     L35 42
+                     L35 58
+                     C40 68 50 73 61 70
+                     L49 86
+                     L29 82
+                     L18 67
+                     Z"
+                  fill="#aaaaaa"/>
+
+            <!-- Rotating lower section -->
+            <path d="M61 70
+                     L76 60
+                     L92 77
+                     L76 91
+                     L57 91
+                     L44 81
+                     C51 83 58 78 61 70
+                     Z"
+                  fill="#aaaaaa"/>
+
+            <!-- White center -->
+            <circle cx="56" cy="52" r="19" fill="#fafafa"/>
+
+        </svg>
+
+        <div class="logo-text">reCAPTCHA</div>
+    </div>
+
+    <div class="message" id="message"></div>
+
+</div>
+
+<script>
+const captcha = document.getElementById("captcha");
+const checkbox = document.getElementById("checkbox");
+const label = document.getElementById("label");
+const message = document.getElementById("message");
+
+let attempts = 0;
+
+const messages = [
+    "I'm not a robot",
+    "Try again",
+    "Please click",
+    "Come on",
+    "Are you human?",
+    "Are you sure?",
+    "Are you sure?",
+    "Are you sure?"
+];
+
+document.addEventListener("mousemove", (e) => {
+
+    const rect = checkbox.getBoundingClientRect();
+
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const distance = Math.hypot(
+        e.clientX - centerX,
+        e.clientY - centerY
+    );
+
+    if (distance < 95) {
+        escape(e.clientX, e.clientY);
+    }
+});
+
+function escape(mouseX, mouseY) {
+
+    attempts++;
+
+    const box = captcha.getBoundingClientRect();
+
+    const size = checkbox.offsetWidth;
+    const padding = 12;
+
+    const minX = padding;
+    const maxX = box.width - size - padding;
+
+    const minY = padding;
+    const maxY = box.height - size - padding;
+
+    let x, y;
+
+    // Find a position away from the cursor
+    let tries = 0;
+
+    do {
+        x = minX + Math.random() * (maxX - minX);
+        y = minY + Math.random() * (maxY - minY);
+
+        const absoluteX = box.left + x + size / 2;
+        const absoluteY = box.top + y + size / 2;
+
+        tries++;
+
+        if (Math.hypot(absoluteX - mouseX, absoluteY - mouseY) > 130) {
+            break;
+        }
+
+    } while (tries < 30);
+
+    checkbox.style.transform = "none";
+    checkbox.style.left = x + "px";
+    checkbox.style.top = y + "px";
+
+    // Change text after repeated attempts
+    const index = Math.min(attempts, messages.length - 1);
+
+    if (attempts >= 5) {
+        label.textContent = messages[index];
+    }
+}
+</script>
+
+</body>
 </html>
